@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-card: var(--bg-card);
+  --color-text-base: var(--text-base);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border-color);
+  
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  /* Dark mode is default */
+  --primary: #102C26;
+  --primary-light: #1A3E36;
+  --secondary: #F7E7CE;
+  --accent: #D4A017;
+  --accent-hover: #F0B824;
+  --bg-base: #0F172A;
+  --bg-surface: rgba(16, 44, 38, 0.15);
+  --bg-card: rgba(15, 23, 42, 0.65);
+  --text-base: #F8FAFC;
+  --text-muted: #94A3B8;
+  --border-color: rgba(247, 231, 206, 0.1);
+  --glow-color: rgba(212, 160, 23, 0.15);
+}
+
+html.light {
+  /* Light mode values */
+  --primary: #102C26;
+  --primary-light: #0A1E1A;
+  --secondary: #102C26;
+  --accent: #B5840D;
+  --accent-hover: #996F0A;
+  --bg-base: #F8FAFC;
+  --bg-surface: rgba(247, 231, 206, 0.25);
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --text-base: #0F172A;
+  --text-muted: #475569;
+  --border-color: rgba(16, 44, 38, 0.12);
+  --glow-color: rgba(16, 44, 38, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-base);
+  font-family: var(--font-sans);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px -10px var(--glow-color);
+  transform: translateY(-4px);
+}
+
+.glass-input {
+  background: rgba(15, 23, 42, 0.3);
+  border: 1px solid var(--border-color);
+  color: var(--text-base);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+html.light .glass-input {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.glass-input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Grid overlay background */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+}
+
+html.light .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(16, 44, 38, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 44, 38, 0.03) 1px, transparent 1px);
+}
+
+/* Text glow effect */
+.text-glow {
+  text-shadow: 0 0 10px rgba(212, 160, 23, 0.3);
+}
+
+html.light .text-glow {
+  text-shadow: 0 0 10px rgba(16, 44, 38, 0.15);
+}
+
+/* Golden gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F7E7CE 0%, #D4A017 50%, #B5840D 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .text-gradient-gold {
+  background: linear-gradient(135deg, #102C26 0%, #B5840D 60%, #855F05 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom typing cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { color: transparent }
+  50% { color: var(--accent) }
+}
